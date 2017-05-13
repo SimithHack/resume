@@ -1,0 +1,138 @@
+/**
+ * Created by xfq on 15/7/14.
+ */
+define("base/Ability",["base/scaner"],function(sc){
+    var tmp=function(args){
+        this.args=$.extend({
+            paper:null,
+            text:"",
+            r:0,
+            cx:0,cy:0,reg:0,
+            color:"white",
+            type:"default"
+        },args);
+        this.reg=this.args.reg;
+        this.init();
+    };
+    tmp.prototype={
+        init:function(){
+            var paper=this.args.paper,attr=this.args,ctx=this;
+            var wp=sc.getCirclePositon({
+                cx:attr.cx,cy:attr.cy,r:attr.r,reg:attr.reg
+            })
+            this.glow=paper.circle(wp.x,wp.y,45).attr({
+                fill:attr.color,
+                "fill-opacity":1,
+                "stroke":"none"
+            });
+            this.ability = paper.circle(attr.cx,attr.cy,45).attr({
+                "stroke-width":4,
+                "stroke":"white",
+                "fill":attr.color,
+                "fill-opacity":0,
+                "cursor":"pointer"
+            });
+            this.text=paper.text(wp.x,wp.y,attr.text);
+            this.glow.hide();
+            this.text.hide();
+            this.regEvent();
+        },
+        regEvent:function(){
+            var ctx = this;
+            this.ability.mouseover(function(){
+                eve("element.ability.mouseover",ctx);
+                ctx.playGlow();
+            });
+            this.text.mouseover(function(){
+                eve("element.ability.mouseover",ctx);
+                ctx.playGlow();
+            });
+            this.ability.mouseout(function(){
+                eve("element.ability.mouseout",ctx);
+                ctx.stop();
+            });
+            this.text.mouseout(function(){
+                eve("element.ability.mouseout",ctx);
+                ctx.stop();
+            });
+            this.ability.click(function(){
+                eve("element.ability.click",ctx);
+            });
+            this.text.click(function(){
+                eve("element.ability.click",ctx);
+            });
+        },
+        stop:function(){
+            this.glow.stop();
+            this.glow.hide();
+            this.ability.stop();
+        },
+        play:function(){
+            var ctx=this,
+                attr=this.args,
+                wp=sc.getCirclePositon({
+                    cx:attr.cx,cy:attr.cy,r:attr.r,reg:attr.reg
+                });
+            this.text.hide();
+            this.ability.attr({
+                cx:attr.cx,cy:attr.cy
+            });
+            this.ability.animate({
+                cx:wp.x,cy:wp.y,"fill-opacity":1
+            },500,"linear",function(){
+                ctx.text.show();
+                ctx.text.attr({
+                    fill:"white",
+                    "font-weight":"bolder",
+                    "font-size":16,
+                    "cursor":"pointer"
+                });
+            });
+        },
+        playGlow:function(){
+            this.glow.show();
+            this.glow.stop();
+            var ctx = this;
+            this.glow.attr({
+                cx:this.ability.attr("cx"),
+                cy:this.ability.attr("cy")
+            });
+            this.animation=Raphael.animation({
+                "fill-opacity":0.2,
+                r:55
+            },400,">",function(){
+                ctx.glow.attr({
+                    "fill-opacity":0.2,
+                    r:55
+                });
+                ctx.glow.animate({
+                    "fill-opacity":1,
+                    r:45
+                },200,function(){
+                    this.attr({
+                        "fill-opacity":1,
+                        r:45
+                    });
+                    ctx.glow.animate(ctx.animation);
+                });
+            });
+            this.glow.animate(this.animation);
+        },
+        refresh:function(pos){
+            this.ability.attr({
+                cx:pos.x,cy:pos.y
+            });
+            if(this.text){
+                this.text.attr(pos);
+            }
+        },
+        refreshByReg:function(reg){
+            this.reg=this.reg+reg;
+            var wp=sc.getCirclePositon({
+                cx:this.args.cx,cy:this.args.cy,r:this.args.r,reg:this.reg
+            });
+            this.refresh(wp);
+        }
+    };
+    return tmp;
+});

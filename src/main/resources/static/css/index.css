@@ -1,0 +1,139 @@
+.navbar .collapse {
+  background-color: #4D4D66; }
+  .navbar .collapse .nav li > a {
+    color: #89C791; }
+  .navbar .collapse .nav li.active > a {
+    color: black; }
+
+.content {
+  background-color: #faffe1;
+  position: absolute;
+  top: 48px;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+  .content .brief {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    overflow: hidden; }
+    .content .brief .brief_index {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      right: 0; }
+    .content .brief .workexp {
+      background-image: url(../img/bg.png);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      right: 0;
+      overflow: hidden; }
+    .content .brief .baseinfo {
+      background-image: url(../img/bg.png);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      right: 0;
+      overflow: hidden; }
+@keyframes baseinfo_h1 {
+  from {
+    transform: translate(-680px); }
+  to {
+    transform: translate(0px); } }
+@-o-keyframes baseinfo_h1 {
+  from {
+    transform: translate(-680px); }
+  to {
+    transform: translate(0px); } }
+@-webkit-keyframes baseinfo_h1 {
+  from {
+    transform: translate(-680px); }
+  to {
+    transform: translate(0px); } }
+@-moz-keyframes baseinfo_h1 {
+  from {
+    transform: translate(-680px); }
+  to {
+    transform: translate(0px); } }
+      .content .brief .baseinfo h1 {
+        padding-left: 20px;
+        -moz-animation: baseinfo_h1 500ms ease-in;
+        -webkit-animation: baseinfo_h1 500ms ease-in;
+        -o-animation: baseinfo_h1 500ms ease-in;
+        animation: baseinfo_h1 500ms ease-in; }
+@keyframes baseinfo_blockquote {
+  from {
+    transform: translate(1500px); }
+  to {
+    transform: translate(0px); } }
+@-o-keyframes baseinfo_blockquote {
+  from {
+    transform: translate(1500px); }
+  to {
+    transform: translate(0px); } }
+@-webkit-keyframes baseinfo_blockquote {
+  from {
+    transform: translate(1500px); }
+  to {
+    transform: translate(0px); } }
+@-moz-keyframes baseinfo_blockquote {
+  from {
+    transform: translate(1500px); }
+  to {
+    transform: translate(0px); } }
+      .content .brief .baseinfo blockquote {
+        font-weight: normal;
+        color: #8a8b9c;
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+        -moz-animation: baseinfo_blockquote 500ms ease-in;
+        -webkit-animation: baseinfo_blockquote 500ms ease-in;
+        -o-animation: baseinfo_blockquote 500ms ease-in;
+        animation: baseinfo_blockquote 500ms ease-in; }
+      .content .brief .baseinfo .content {
+        position: absolute;
+        top: 160px;
+        bottom: 20px;
+        background-color: #4E4E74; }
+        .content .brief .baseinfo .content .box {
+          width: 100%;
+          height: 100%;
+          position: relative; }
+          .content .brief .baseinfo .content .box .rolllogo {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 80px;
+            left: 80px; }
+          .content .brief .baseinfo .content .box .info {
+            position: absolute;
+            top: 10px;
+            left: 360px;
+            right: 70px; }
+            .content .brief .baseinfo .content .box .info .title-box .ch {
+              font-size: 36px;
+              color: white;
+              font-weight: bold; }
+            .content .brief .baseinfo .content .box .info .title-box .en {
+              font-size: 18px;
+              color: darkgrey;
+              text-indent: 2em; }
+            .content .brief .baseinfo .content .box .info .info-box {
+              font-size: 14px;
+              line-height: 24px;
+              margin-top: 6px;
+              background-color: #7575AD;
+              padding: 0 8px 8px 8px;
+              display: inline-block;
+              border: solid #2C2C42 1px;
+              color: #C7C7C7;
+              opacity: 0; }
+
+/*# sourceMappingURL=index.css.map */
